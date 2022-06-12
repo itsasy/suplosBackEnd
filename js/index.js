@@ -67,8 +67,8 @@ function obtenerCiudades() {
 function obtenerTipos() {
     let tipos = [];
     $.getJSON('/data-1.json', function (datos) {
-        $.each(datos, function (key, elemento){
-            if(!(tipos.includes(elemento.Tipo))){
+        $.each(datos, function (key, elemento) {
+            if (!(tipos.includes(elemento.Tipo))) {
                 tipos.push(elemento.Tipo);
                 $('#selectTipo').append(`
                     <option value='${elemento.Tipo}'> ${elemento.Tipo}</option>
@@ -78,7 +78,48 @@ function obtenerTipos() {
     })
 }
 
+function obtenerBienesDisponibles() {
+    var listado = '';
+    var imagenUrl = '/img/home.jpg';
+    var resultadosBusqueda = document.getElementById('resultadosBusqueda');
+    let cont = 0;
+
+    $.getJSON('./data-1.json', function (datos) {
+        $.each(datos, function (key, dato) {
+            listado += `
+                <div class="lista">
+                     <div class="contenedorImagen">
+                        <img src="${imagenUrl}" alt="registroImagen">
+                     </div>
+                     <div class="contenedorDetalle">
+                        <ul class="detalles">
+                            <li>Dirección: <span>${dato.Direccion}</span></li>
+                            <li>Cidudad: <span>${dato.Ciudad}</span></li>
+                            <li>Teléfono: <span>${dato.Telefono}</span></li>
+                            <li>Código postal: <span>${dato.Codigo_Postal}</span></li>
+                            <li>Tipo: <span>${dato.Tipo}</span></li>
+                            <li>Precio: <span>${dato.Precio}</span></li>
+                        </ul>
+                        
+                        <div class="contenedorBotones">
+                            <button class="botonVerde botonEliminar">
+                                Eliminar
+                            </button>
+                            <button class="botonVerde botonEditar">
+                                Guardar
+                            </button>
+                        </div>
+                     </div>
+                </div>
+        `;
+        })
+
+        resultadosBusqueda.innerHTML = listado;
+    });
+}
+
 inicializarSlider();
 playVideoOnScroll();
 obtenerCiudades();
-obtenerTipos()
+obtenerTipos();
+obtenerBienesDisponibles();

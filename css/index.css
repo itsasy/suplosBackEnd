@@ -103,7 +103,7 @@ video#vidFondo {
   background-color: #F2F2F2;
   display: flex;
   flex-flow: row wrap;
-  
+
   padding: 5px;
 }
 .tituloContenido h5{
@@ -142,4 +142,50 @@ video#vidFondo {
 }
 .card-action{
   text-align: right;
+}
+
+
+.lista{
+  width: 100%;
+  box-shadow: -2px 3px 17px -10px rgba(0, 0, 0, 0.75);
+  padding: 10px;
+}
+
+.lista:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.contenedorImagen {
+  width: 38%;
+  float: left;
+  padding: 5px;
+}
+
+.contenedorImagen img {
+  border-radius: 10px;
+  width: 100%;
+
+}
+
+.contenedorDetalle {
+  padding: 0 5px;
+  width: 60%;
+  float: left;
+}
+
+.detalles li {
+  font-weight: bolder;
+}
+
+.detalles li span {
+  font-weight: normal;
+}
+
+.botonVerde {
+  background: cadetblue;
+  color: #FFF;
+  padding: 10px 20px;
+  border: none;
 }
