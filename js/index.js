@@ -82,10 +82,11 @@ function obtenerBienesDisponibles() {
     var listado = '';
     var imagenUrl = '/img/home.jpg';
     var resultadosBusqueda = document.getElementById('resultadosBusqueda');
+    let contador = document.getElementById('contador');
     let cont = 0;
-
     $.getJSON('./data-1.json', function (datos) {
         $.each(datos, function (key, dato) {
+            cont++;
             listado += `
                 <div class="lista">
                      <div class="contenedorImagen">
@@ -115,6 +116,7 @@ function obtenerBienesDisponibles() {
         })
 
         resultadosBusqueda.innerHTML = listado;
+        contador.innerHTML = cont;
     });
 }
 
